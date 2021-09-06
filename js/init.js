@@ -12,6 +12,8 @@ const PRODUCT_INFO_COMMENTS_URL =
   'https://japdevdep.github.io/ecommerce-api/product/5678-comments.json';
 const CART_INFO_URL = 'https://japdevdep.github.io/ecommerce-api/cart/987.json';
 const CART_BUY_URL = 'https://japdevdep.github.io/ecommerce-api/cart/buy.json';
+//Variable para acceder al elemento "span" en el nav con id "login"
+var login = document.getElementById('login')
 
 var showSpinner = function () {
   document.getElementById('spinner-wrapper').style.display = 'block';
@@ -49,9 +51,14 @@ var getJSONData = function (url) {
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
+
+//Variable con condicional de localstorage para que cuando se entre al "index" se redireccione al "login"
 document.addEventListener('DOMContentLoaded', function (e) {
   var storage = window.localStorage;
   if (storage.length == 0) {
     window.location.href = 'login.html';
   }
+// al cargar el contenedor "setea" el html con el email guardado en el  localstorage.
+  login.innerHTML = "Bienvenido " + storage.Email
+  login.style.color = "white";
 });
